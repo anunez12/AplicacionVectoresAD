@@ -16,7 +16,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     /**
      * Creates new form Interfaz
-     */
+     */ 
+    double v[];
     public Interfaz() {
         initComponents();
     }
@@ -116,22 +117,28 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
-       if(txtLongitud.getText().trim().isEmpty()){ 
-           JOptionPane.showMessageDialog(this,"Digite la longitud del vector","Error",JOptionPane.ERROR_MESSAGE); 
-           txtLongitud.requestFocusInWindow();
-       }else if(txtLongitud.getText().trim().equals("0")){ 
-         JOptionPane.showMessageDialog(this,"La longitud no puede ser cero","Error",JOptionPane.ERROR_MESSAGE); 
-         txtLongitud.requestFocusInWindow(); 
-         txtLongitud.selectAll();
-       }
+        int longitud;
+        if (txtLongitud.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite la longitud", "Error", JOptionPane.ERROR_MESSAGE);
+            txtLongitud.requestFocusInWindow();
+        } else if (Integer.parseInt(txtLongitud.getText().trim())==0) {
+            JOptionPane.showMessageDialog(this, "La longitud no puede ser cero", "Error", JOptionPane.ERROR_MESSAGE);
+            txtLongitud.requestFocusInWindow();
+            txtLongitud.selectAll();
+        }else{ 
+            longitud=Integer.parseInt(txtLongitud.getText().trim()); 
+            v=new double[longitud]; 
+            JOptionPane.showMessageDialog(this,"Vector creado exitosamente");
+       
     }//GEN-LAST:event_cmdCrearActionPerformed
-
+    }
     private void txtLongitudKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLongitudKeyTyped
         char c=evt.getKeyChar(); 
        if(!Character.isDigit(c)){ 
          getToolkit().beep(); 
          evt.consume();
-       }
+       } 
+       
     }//GEN-LAST:event_txtLongitudKeyTyped
 
     /**
