@@ -175,21 +175,35 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void cmdLlenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarActionPerformed
         double n; 
+        int sw,res;
         for (int i = 0; i < v.length; i++) { 
-           try{
+            do{ 
+               sw=1;
+            try{
             n=Double.parseDouble(JOptionPane.showInputDialog(this,"Digite el elemento en la posicion"+i)); 
             v[i]=n; 
-           }catch(NumberFormatException e){ 
-              JOptionPane.showMessageDialog(this,"Ingrese un numero valido");
-           }catch(NullPointerException e){ 
-             JOptionPane.showMessageDialog(this, "No puedes salir");
-           }
+            }catch(NumberFormatException e){
+              JOptionPane.showMessageDialog(this, "Digite un numero valido"); 
+              sw=0;
+            }catch(NullPointerException e){
+              JOptionPane.showMessageDialog(this,"No puede salir"); 
+             // sw=0; 
+              res=JOptionPane.showConfirmDialog(this,"¿Seguro que desea salir?","Salir",JOptionPane.YES_NO_OPTION); 
+              if(res==0){ 
+               sw=1; 
+               i=v.length;
+              }else{ 
+                sw=0;
+              }
+              
+            } 
+        }while(sw==0); 
+          
                cmdCrear.setEnabled(false); 
         cmdLlenar.setEnabled(false); 
         cmdAutomatico.setEnabled(false); 
         cmdMostrar.setEnabled(true); 
-        cmdBorrar.setEnabled(true); 
-        
+        cmdBorrar.setEnabled(true);
             
                 
             }
@@ -221,7 +235,7 @@ public class Interfaz extends javax.swing.JFrame {
         cmdAutomatico.setEnabled(false); 
         cmdMostrar.setEnabled(false); 
         cmdBorrar.setEnabled(true); 
-        txtLongitud.setEditable(true);
+        
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAutomaticoActionPerformed
