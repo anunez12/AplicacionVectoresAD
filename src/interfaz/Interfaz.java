@@ -175,14 +175,21 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void cmdLlenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarActionPerformed
         double n; 
-        for (int i = 0; i < v.length; i++) {
+        for (int i = 0; i < v.length; i++) { 
+           try{
             n=Double.parseDouble(JOptionPane.showInputDialog(this,"Digite el elemento en la posicion"+i)); 
             v[i]=n; 
+           }catch(NumberFormatException e){ 
+              JOptionPane.showMessageDialog(this,"Ingrese un numero valido");
+           }catch(NullPointerException e){ 
+             JOptionPane.showMessageDialog(this, "No puedes salir");
+           }
                cmdCrear.setEnabled(false); 
         cmdLlenar.setEnabled(false); 
         cmdAutomatico.setEnabled(false); 
         cmdMostrar.setEnabled(true); 
-        cmdBorrar.setEnabled(true);
+        cmdBorrar.setEnabled(true); 
+        
             
                 
             }
