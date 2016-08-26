@@ -19,7 +19,12 @@ public class Interfaz extends javax.swing.JFrame {
      */ 
     double v[];
     public Interfaz() {
-        initComponents();
+        initComponents(); 
+        cmdCrear.setEnabled(true); 
+        cmdLlenar.setEnabled(false); 
+        cmdAutomatico.setEnabled(false); 
+        cmdMostrar.setEnabled(false); 
+        cmdBorrar.setEnabled(true);
     }
 
     /**
@@ -68,7 +73,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(txtLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 50, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 25, 145, 100));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 145, 100));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,7 +103,7 @@ public class Interfaz extends javax.swing.JFrame {
                 cmdAutomaticoActionPerformed(evt);
             }
         });
-        jPanel2.add(cmdAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+        jPanel2.add(cmdAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         cmdMostrar.setText("mostrar");
         cmdMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +111,7 @@ public class Interfaz extends javax.swing.JFrame {
                 cmdMostrarActionPerformed(evt);
             }
         });
-        jPanel2.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 120, -1));
+        jPanel2.add(cmdMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 120, -1));
 
         cmdBorrar.setText("borrar");
         cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +121,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel2.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, -1, -1));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 62, 240, 176));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 62, 250, 176));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,7 +138,8 @@ public class Interfaz extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 136, 230, 153));
 
-        pack();
+        setSize(new java.awt.Dimension(673, 339));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
@@ -148,7 +154,13 @@ public class Interfaz extends javax.swing.JFrame {
         }else{ 
             longitud=Integer.parseInt(txtLongitud.getText().trim()); 
             v=new double[longitud]; 
-            JOptionPane.showMessageDialog(this,"Vector creado exitosamente");
+            JOptionPane.showMessageDialog(this,"Vector creado exitosamente"); 
+            cmdCrear.setEnabled(false); 
+        cmdLlenar.setEnabled(true); 
+        cmdAutomatico.setEnabled(true); 
+        cmdMostrar.setEnabled(false); 
+        cmdBorrar.setEnabled(true); 
+        txtLongitud.setEditable(false);
        
     }//GEN-LAST:event_cmdCrearActionPerformed
     }
@@ -166,6 +178,11 @@ public class Interfaz extends javax.swing.JFrame {
         for (int i = 0; i < v.length; i++) {
             n=Double.parseDouble(JOptionPane.showInputDialog(this,"Digite el elemento en la posicion"+i)); 
             v[i]=n; 
+               cmdCrear.setEnabled(false); 
+        cmdLlenar.setEnabled(false); 
+        cmdAutomatico.setEnabled(false); 
+        cmdMostrar.setEnabled(true); 
+        cmdBorrar.setEnabled(true);
             
                 
             }
@@ -177,7 +194,12 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
         for (int i = 0; i < v.length; i++) {
-          txtResultado.append(v[i]+" "); 
+          txtResultado.append(v[i]+" ");  
+          cmdCrear.setEnabled(false); 
+        cmdLlenar.setEnabled(false); 
+        cmdAutomatico.setEnabled(false); 
+        cmdMostrar.setEnabled(false); 
+        cmdBorrar.setEnabled(true);
           
             
         }
@@ -186,7 +208,13 @@ public class Interfaz extends javax.swing.JFrame {
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
       txtLongitud.setText(""); 
       txtResultado.setText(""); 
-      v=null;
+      v=null; 
+      cmdCrear.setEnabled(true); 
+        cmdLlenar.setEnabled(false); 
+        cmdAutomatico.setEnabled(false); 
+        cmdMostrar.setEnabled(false); 
+        cmdBorrar.setEnabled(true); 
+        txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAutomaticoActionPerformed
@@ -194,7 +222,12 @@ public class Interfaz extends javax.swing.JFrame {
         for (int i = 0; i < v.length; i++) {
            n= (int)(Math.random()*50 + 1 ); 
             
-            v[i]=n; 
+            v[i]=n;  
+        cmdCrear.setEnabled(false); 
+        cmdLlenar.setEnabled(false); 
+        cmdAutomatico.setEnabled(false); 
+        cmdMostrar.setEnabled(true); 
+        cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdAutomaticoActionPerformed
     }
     /**
