@@ -175,7 +175,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void cmdLlenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarActionPerformed
         double n; 
-        int sw,res;
+        int sw,res; 
+        boolean aux=true; 
+        
         for (int i = 0; i < v.length; i++) { 
             do{ 
                sw=1;
@@ -191,7 +193,8 @@ public class Interfaz extends javax.swing.JFrame {
               res=JOptionPane.showConfirmDialog(this,"¿Seguro que desea salir?","Salir",JOptionPane.YES_NO_OPTION); 
               if(res==0){ 
                sw=1; 
-               i=v.length;
+               i=v.length; 
+               aux=false;
               }else{ 
                 sw=0;
               }
@@ -202,9 +205,11 @@ public class Interfaz extends javax.swing.JFrame {
                cmdCrear.setEnabled(false); 
         cmdLlenar.setEnabled(false); 
         cmdAutomatico.setEnabled(false); 
-        cmdMostrar.setEnabled(true); 
+        cmdMostrar.setEnabled(aux); 
         cmdBorrar.setEnabled(true);
             
+        
+        
                 
             }
                     
